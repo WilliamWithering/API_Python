@@ -6,17 +6,11 @@ import classPersonnage
 import histoires
 
 #Initialisation des variables utilisées dans main
-titreChoisi = ""
 transition = 1
 
-histoires.afficherTitres()
+titre_choisi = histoires.choisir_titres()
 
-while not histoires.titre_correct(titreChoisi):
-    if titreChoisi :
-        print("Titre choisi incorrect")
-    titreChoisi = input("Choisir un titre d'histoire : ")
-
-jeu = histoires.charger_jeu(titreChoisi)
+jeu = histoires.charger_jeu(titre_choisi)
 
 jeu.afficher_regles()
 
