@@ -1,0 +1,1 @@
+#Contiendra les fonctions pour choisir et charger une histoire
