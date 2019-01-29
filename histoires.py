@@ -1,8 +1,7 @@
 import classJeu
 
 def choisir_titre():
-	liste_histoires = ["a","b","c"]
-
+	liste_histoires=["Une histoire de poils.","La forêt noire","Le petit chaperon rouge"]
 	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
 	for i in range(len(liste_histoires)):
 		print(i, " : ", liste_histoires[i])
