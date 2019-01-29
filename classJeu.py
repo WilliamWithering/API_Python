@@ -8,6 +8,7 @@ class Jeu:
         self.lieu_actuel = lieu_initial
         self.regles = "Regles du jeu : "
         self.lieu=[]
+        self.transition = 1
 
     def __repr__(self):
         for i in range(len(self.lieu)):
@@ -25,6 +26,19 @@ class Jeu:
         pass
 
     def execute(self, commande):
+        commande = commande.lower()
+        words = commande.split(" ")
+
+        if words[0] == "aller":
+            for i in words[1:]:
+                if i in self.lieu[self.lieu_actuel].adjacence.keys():
+                    self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[i]
+                    self.transition = 1
+        elif :
+            pass
+        else :
+            print("Verbe non reconnu.")
+
         pass
 
     def est_fini():
