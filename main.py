@@ -29,3 +29,6 @@ while not jeu.est_fini():
         transition = 0
     commande = input()
     jeu.execute(commande)
+
+#On affiche le message du noeud final
+jeu.decrire()
