@@ -6,7 +6,10 @@ class Personnage:
         self.inventaire = inventaire
 
     def afficher_inventaire(self):
-        if len(self.inventaire) > 0:
+        """
+        Affiche les noms des objets présents dans l'inventaire
+        """
+        if len(self.inventaire) > 0 :
             print("Inventaire : ")
             for k in self.inventaire:
                 print(k.nom)
