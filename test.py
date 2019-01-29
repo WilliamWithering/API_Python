@@ -1,1 +1,1 @@
-l=input("quel est on nom")
+#l=input("quel est on nom")
