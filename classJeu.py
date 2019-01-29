@@ -6,7 +6,7 @@ import classPersonnage
 class Jeu:
     def __init__(self, lieu_initial):
         self.lieu_actuel = lieu_initial
-        self.regles = "Regles du jeu : "
+        self.regles = "Regles du jeu : \n Pour vous déplacer dans le jeu, vous devez taper le lieu précedé du verbe 'aller'. Plusieurs fins sont possibles dans ce superbe jeu. Certaines sont tragiques, et une seule permet d'accèder au graal. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Que le sort puisse vous etre favorable."
         self.lieu=[]
         self.transition = 1
 
