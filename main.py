@@ -1,7 +1,6 @@
 import classJeu
 import histoires
 
-
 titre_choisi = histoires.choisir_titre()
 
 jeu = histoires.charger_jeu(titre_choisi)
