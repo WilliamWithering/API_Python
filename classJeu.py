@@ -15,8 +15,8 @@ class Jeu:
             print(self.lieu[i])
         return "C'est tout."
 
-    def ajouter_lieu(self, id_lieu, nom, description, adjacence):
-        self.lieu.append(Lieu(id_lieu, nom, description, adjacence))
+    def ajouter_lieu(self, id_lieu, nom, description, adjacence = {}, objet = []):
+        self.lieu.append(Lieu(id_lieu, nom, description, adjacence, objet))
 
     def afficher_regles(self):
         print(self.regles)
