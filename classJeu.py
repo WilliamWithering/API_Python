@@ -6,7 +6,5 @@ import classPersonnage
 class Jeu: 
 	def __init__(self): 
 		self.lieu_initial="0" 
-		self.identifiant = identifiant 
-    	self.description = description 
-    	self.adjacence = adjacence 
+    	self.regles = "Regles du jeu : " 
      	lieu=[]
