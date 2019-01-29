@@ -35,7 +35,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(1, "La Taverne", "Votre intuition ne vous a pas trompé. Hormis l'ivrogne qui se noie dans la bière, il n'y a personne au \033[1m comptoir \033[0m. Sur les \033[1m tables \033[0m, un couple termine son repas. Depuis l'escalier, vous pouvez sentir l'odeur de renfermé de l'\033[1m etage \033[0m.", {"dehors":0})
 		jeu.ajouter_lieu(2, "Chez Le Barbier", "\033[1mChez le barbier \033[0m règne une mauvaise humeur. Pas un seul client, et le propriétaire fait les 100 pas, pestant contre la perte d'un objet. Vous pouvez aller \033[1m parler au barbier \033[0m, mais ce dernier ne vous écoutera sûrement pas",{"dehors":0})
 		jeu.ajouter_lieu(3, "La Forge", "Vous rentrez dans la  \033[1m forge \033[0m, mais personne n'est présent pour vous accueillir. Vous remarquez une belle \033[1m épée \033[0m qui est en train de refroidir. Il vaudrait mieux \033[1m ressortir \033[0m",{"dehors":0})
-		jeu.ajouter_lieu(4, "Petit Chemin","C'est un \033[1m petit chemin \033[0m en l'apparence bien tranquille mais qui vous conduira peut-etre vers bien des surprises. Assurez vous bien de vos arrieres ou il sera bientot trop tard..",{"place":0,"grotte":5})
+		jeu.ajouter_lieu(4, "Petit Chemin","C'est un \033[1m petit chemin \033[0m en l'apparence bien tranquille mais qui vous conduira peut-etre vers bien des surprises. Assurez vous bien de vos arrieres ou il sera bientot trop tard... Vous apercevez au loin une \033[1m grotte \033[0m",{"place":0,"grotte":5})
 		jeu.ajouter_lieu(5, "La Grotte", "Le chemin derrière vous s'avère trop glissant pour faire demi-tour. Vous êtes dans une belle \033[1m  grotte \033[0m. Enfin. Une \033[1m grotte \033[0m sombre. Une \033[1m grotte \033[0m qui pourrait cacher des trésors mais aussi de terribles créatures. Comme ce \033[1m  serpent \033[0m qui se dresse devant vous. Vous n'avez plus le choix, il va falloir faire face. A vraincre sans peril, on triomphe sans gloire. Nota : une arme peut etre utile.",{})
 		jeu.ajouter_lieu(6, "La Forge", "Le forgeron est présent. ",{"dehors":0})
 
@@ -47,7 +47,7 @@ def charger_jeu(titre_choisi):
 
 	if titre_choisi == "La forêt noire":
 		print("Histoire non existante pour le moment.")
-	
+
 	if titre_choisi == "Le petit chaperon rouge":
 		print("Histoire non existante pour le moment.")
 
