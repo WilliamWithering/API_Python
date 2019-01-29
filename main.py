@@ -9,9 +9,7 @@ jeu = histoires.charger_jeu(titre_choisi)
 jeu.afficher_regles()
 
 # Pour vérifier que le jeu a été chargé correctement
-# print(jeu)
-
-# jeu.set_nom_personnage(input())
+print(jeu)
 
 #On commence vraiment le jeu
 while not jeu.est_fini():

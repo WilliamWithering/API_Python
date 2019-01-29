@@ -1,11 +1,14 @@
 #Définition de la classe personnage : nom, inventaire...
 
 class Personnage:
-  def __init__(self, nom, inventaire):
-    self.nom = nom 
-    self.inventaire = inventaire 
+    def __init__(self, nom, inventaire = []):
+        self.nom = nom
+        self.inventaire = inventaire
 
-    def dispinvent(self):
-        for k in self.inventaire:
-            print(k)
-    
+    def afficher_inventaire(self):
+        if len(self.inventaire) > 0:
+            print("Inventaire : ")
+            for k in self.inventaire:
+                print(k.nom)
+        else :
+            print("Inventaire vide ! ")
