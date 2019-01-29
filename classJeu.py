@@ -5,7 +5,7 @@ import classPersonnage
 
 class Jeu:
     def __init__(self, lieu_initial):
-        self.lieu_initial = lieu_initial
+        self.lieu_actuel = lieu_initial
         self.regles = "Regles du jeu : "
         self.lieu=[]
 
@@ -25,6 +25,9 @@ class Jeu:
 
     def execute(self, commande):
         pass
+
+    def est_fini():
+        return len(self.lieu[self.lieu_actuel].adjacence) == 0
 
 #Personnage n'existe pas encore
     def set_nom_personnage(self, nom):

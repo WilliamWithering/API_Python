@@ -6,6 +6,7 @@ class Lieu:
       self.nom = nom
       self.description = description
       self.adjacence = adjacence
+      
     def __repr__(self):
          s=self.nom
          s+= " ~~ \n"
