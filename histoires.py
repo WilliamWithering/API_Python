@@ -15,8 +15,12 @@ def choisir_titre():
 def charger_jeu(titre_choisi):
 	jeu = classJeu.Jeu()
 	if titre_choisi == "Une histoire de poils.":
-		jeu.ajouter_lieu(0, "place du village", "une belle place", {"bar":1})
-		jeu.ajouter_lieu(1, "le bar du village", "un bar trop tranquille", {"dehors":0})
+		jeu.ajouter_lieu(0, "place du village", "Voici la place du village, traditionnel coeur de l'animation campagnarde. En cette fin d'après midi, nul pas ne vient cependant fouler les dalles de pierre. En face d'une taverne à l'agitation faible se trouve un barbier. Une massive forge se dresse, tenant fièrement la tête aux vétustes chaumières. Son propriétaire semble cependant absent. Enfin, un petit chemin tortueux serpente en s'éloignant du village.", {"taverne":1,"barbier":2,"forgeron":3,"chemin":4})
+		jeu.ajouter_lieu(1, "le bar du village", "blabla", {"dehors":0})
+		jeu.ajouter_lieu(2, "le coiffeur", "blabla",{"dehors":0})
+		jeu.ajouter_lieu(3, "le forgeron", "blabla",{"dehors":0})
+		jeu.ajouter_lieu(4, "un petit chemin","blabla",{"place":0,"grotte":5})
+		jeu.ajouter_lieu(5, "la grotte", "blabla","")
 	if titre_choisi == "b":
 		pass
 
