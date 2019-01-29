@@ -15,8 +15,8 @@ class Jeu:
             print(self.lieu[i])
         return "C'est tout."
 
-    def ajouter_lieu(self, id_lieu, nom, description, adjacence):
-        self.lieu.append(classLieu.Lieu(id_lieu, nom, description, adjacence))
+    def ajouter_lieu(self, id_lieu, nom, description, adjacence = {}, objet = []):
+        self.lieu.append(Lieu(id_lieu, nom, description, adjacence, objet))
 
     def afficher_regles(self):
         print(self.regles)
@@ -32,15 +32,25 @@ class Jeu:
         commande = commande.lower()
         words = commande.split(" ")
 
+        mots_reconnus = 0
+
         if words[0] == "aller":
             for i in words[1:]:
                 if i in self.lieu[self.lieu_actuel].adjacence.keys():
                     self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[i]
                     self.transition = 1
+                    mots_reconnus+=1
+
+            if mots_reconnus == 0 :
+                print("La destination n'a pas été reconnue.")
+            if mots_reconnus > 1 :
+                print("Attention, plusieurs mots ont été reconnus. Le dernier a été sélectionné.")
+
+        elif :
+            pass
         else :
             print("Verbe non reconnu.")
 
-        pass
 
     def est_fini(self):
         return len(self.lieu[self.lieu_actuel].adjacence) == 0
