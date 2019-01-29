@@ -7,7 +7,7 @@ class Jeu:
 	def __init__(self, lieu_initial):
 		self.lieu_initial = lieu_initial
     	self.regles = "Regles du jeu : "
-     	lieu=[]
+     	self.lieu=[]
 
     def ajouter_lieu(self, id_lieu, nom, description, adjacence):
         self.lieu.append(Lieu(id_lieu, nom, description, adjacence))
