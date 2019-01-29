@@ -10,7 +10,7 @@ class Personnage:
         Affiche les noms des objets présents dans l'inventaire
         """
         if len(self.inventaire) > 0 :
-            print("Inventaire : ")
+            print("\033[1mInventaire : \033[0m")
             for k in self.inventaire:
                 print(k.nom)
         else :

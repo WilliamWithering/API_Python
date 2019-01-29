@@ -15,8 +15,13 @@ while not jeu.est_fini():
     if jeu.transition:
         jeu.decrire()
         jeu.transition = 0
-    commande = input("> ")
-    jeu.execute(commande)
+
+    jeu.verif_triggers()
+
+    if jeu.transition == 0:
+        commande = input("> ")
+        jeu.execute(commande)
+
 
 #On affiche le message du noeud final
 jeu.decrire()

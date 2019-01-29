@@ -7,7 +7,7 @@ import classObjet
 class Jeu:
     def __init__(self):
         self.lieu_actuel = 0
-        self.regles = "\n \n \n Règles du jeu : \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre' ou 'poser'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \n  Plusieurs fins sont possibles : certaines sont tragiques, et une seule permet d'accèder au graal. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Que le sort puisse vous etre favorable."
+        self.regles = "\n \n \n \033[1mRègles du jeu :\033[0m \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre' ou 'poser'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \n  Plusieurs fins sont possibles : certaines sont tragiques, et une seule permet d'accèder au graal. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Puisse le sort vous etre favorable.\n\n\n"
         self.lieu = []
         self.objets = []
         self.transition = 1
@@ -42,6 +42,9 @@ class Jeu:
     def mettre_objet_dans_lieu(self, id_objet, id_lieu):
         self.lieu[id_lieu].contenu.append(self.objets[id_objet])
 
+    def ajouter_trigger(self, id_lieu, dict_trigger):
+        self.lieu[id_lieu].triggers.update(dict_trigger)
+
     def delete_objets(self):
         self.objets = None
 
@@ -49,24 +52,29 @@ class Jeu:
     def afficher_regles(self):
         print(self.regles)
 
+
+    def est_fini(self):
+        """
+        Fonction servant à évaluer l'état du jeu. Si le noeud (lieu) actuel n'est lié à aucun autre lieu, on estime que le joueur est dans un cul de sac (gagné ou perdu) et le jeu se termine.
+        """
+        return len(self.lieu[self.lieu_actuel].adjacence) == 0
+
+
     def decrire(self):
         """
         Fonction permettant d'afficher le contenu de l'histoire. On affiche d'abord le titre, puis la description du lieu. Enfin, on ajoute les phrases liées aux objets.
         """
-        print("\n")
         print("\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
-        print(self.lieu[self.lieu_actuel].description)
-        desc_objets = ""
+        desc = self.lieu[self.lieu_actuel].description
         for i in range(len(self.lieu[self.lieu_actuel].contenu)):
-            desc_objets += self.lieu[self.lieu_actuel].contenu[i].message
-        print(desc_objets)
-        print("\n")
+            desc += self.lieu[self.lieu_actuel].contenu[i].message
+        print(desc + '\n')
 
     def execute(self, commande):
         """
-        Fonction permettant de reconnaître l'ordre donné par l'utilisateur. 
-        On vérifie d'abord la présence des verbes prendre et poser dans la chaine, puis celle d'aller. 
-        Pour prendre et poser, on change la position de l'objet. Pour aller, on modifie la position actuelle. 
+        Fonction permettant de reconnaître l'ordre donné par l'utilisateur.
+        On vérifie d'abord la présence des verbes prendre et poser dans la chaine, puis celle d'aller.
+        Pour prendre et poser, on change la position de l'objet. Pour aller, on modifie la position actuelle.
 
         On vérifie également la présence d'autres commandes comme l'inventaire.
         """
@@ -107,9 +115,64 @@ class Jeu:
         else :
             print("Verbe non reconnu.")
 
+    def verif_triggers(self):
+        for i in range(len(self.lieu)):
+            for j in self.lieu[i].triggers:
+                if self.condition_satisfaite(j):
+                    self.declencher(i, self.lieu[i].triggers[j])
 
-    def est_fini(self):
+    def condition_satisfaite(self, condition):
         """
-        Fonction servant à évaluer l'état du jeu. Si le noeud (lieu) actuel n'est lié à aucun autre lieu, on estime que le joueur est dans un cul de sac (gagné ou perdu) et le jeu se termine.
+        Input : une chaine de caractères représentant une condition
+        Output : un booléen indiquant si cette condition est satisfaite
         """
-        return len(self.lieu[self.lieu_actuel].adjacence) == 0
+        #On commence par séparer les mots
+        condition = condition.split("&")
+        for i in range(len(condition)):
+            condition[i] = condition[i].strip(" ").split(" ")
+
+        # On crée un tableau qui contiendra un booléen pour chaque condition
+        verification_bools = []
+        for i in range(len(condition)):
+            #vérification d'inventaire
+            if condition[i][0] == "avoir":
+                nom_objet = condition[i][1]
+                objet_trouve = False
+                for j in range(len(self.personnage.inventaire)):
+                    if self.personnage.inventaire[i].raccourci == nom_objet:
+                        objet_trouve = True
+                verification_bools.append(objet_trouve)
+
+            #vérification de position
+            if condition[i][0] == "location":
+                verification_bools.append(self.lieu_actuel == int(condition[i][1]))
+
+        return all(verification_bools)
+
+    def declencher(self, lieu, action):
+        """
+        Input : une chaine de caractères représentant l'action à déclencher
+        """
+        action = action.split("&")
+        for i in range(len(action)):
+            action[i] = action[i].strip(" ").split(" ")
+
+        for i in range(len(action)):
+            if action[i][0] == 'update_lien':
+                tag = action[i][1]
+                id_lieu = int(action[i][2])
+                self.lieu[lieu].adjacence.update({tag:id_lieu})
+
+            if action[i][0] == 'remove':
+                objet = action[i][1]
+                for j in range(len(self.personnage.inventaire)):
+                    if self.personnage.inventaire[j].raccourci == objet:
+                        self.personnage.inventaire.pop(j)
+                        break
+
+            if action[i][0] == 'teleport':
+                self.lieu_actuel = int(action[i][1])
+                self.transition = 1
+
+            if action[i][0] == 'give':
+                self.personnage.inventaire.append(self.objets[int(action[i][1])])
