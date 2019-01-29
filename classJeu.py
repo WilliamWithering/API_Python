@@ -34,8 +34,6 @@ class Jeu:
                 if i in self.lieu[self.lieu_actuel].adjacence.keys():
                     self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[i]
                     self.transition = 1
-        elif :
-            pass
         else :
             print("Verbe non reconnu.")
 
