@@ -47,7 +47,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_trigger(0,{"avoir ciseaux":"update_lien barbier 6"})
 		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & teleport 7 & remove ciseaux & give 2"})
 
-		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je peux pas m'occuper de vous !"})
+		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
 
 	if titre_choisi == "La forêt noire":
 		print("Histoire non existante pour le moment.")
