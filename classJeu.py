@@ -21,7 +21,7 @@ class Jeu:
         print(self.regles)
 
     def decrire(self):
-        self.lieu[self.lieu_actuel].afficher_description()
+        print(self.lieu[self.lieu_actuel].description)
         pass
 
     def execute(self, commande):
