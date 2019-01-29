@@ -19,12 +19,12 @@ class Jeu:
         """
         if self.objets != None:
             print("Dans ce monde il y a des objets : ")
-            for i in range(len(self.objets)):
-                print(self.objets[i].nom)
+            for obj in self.objets:
+                print(obj.nom)
 
         print("Dans ce monde il y a des lieux : ")
-        for i in range(len(self.lieu)):
-            print(self.lieu[i])
+        for lieu in self.lieu:
+            print(lieu)
         return "C'est tout."
 
 ###---- LES AJOUTS UTILISES PAR HISTOIRE
@@ -71,8 +71,8 @@ class Jeu:
         Fonction permettant d'afficher le contenu de l'histoire. On affiche d'abord le titre, puis la description du lieu. Enfin, on ajoute les phrases liées aux objets.
         """
         desc = self.lieu[self.lieu_actuel].description
-        for i in range(len(self.lieu[self.lieu_actuel].contenu)):
-            desc += self.lieu[self.lieu_actuel].contenu[i].message
+        for obj in self.lieu[self.lieu_actuel].contenu:
+            desc += obj.message
         print(desc + '\n')
 
     def execute(self, commande):
@@ -88,23 +88,23 @@ class Jeu:
         mots_reconnus = 0
 
         if words[0] == "prendre":
-            for i in words[1:]:
-                for j in range(len(self.lieu[self.lieu_actuel].contenu)):
-                    if i == self.lieu[self.lieu_actuel].contenu[j].raccourci:
-                        self.personnage.inventaire.append(self.lieu[self.lieu_actuel].contenu[j])
-                        self.lieu[self.lieu_actuel].contenu.pop(j)
+            for mot in words[1:]:
+                for obj in self.lieu[self.lieu_actuel].contenu:
+                    if mot == obj.raccourci:
+                        self.personnage.inventaire.append(obj)
+                        self.lieu[self.lieu_actuel].contenu.remove(obj)
 
         elif words[0] == "poser":
-            for i in words[1:]:
-                for j in range(len(self.personnage.inventaire)):
-                    if i == self.personnage.inventaire[j].raccourci:
-                        self.lieu[self.lieu_actuel].contenu.append(self.personnage.inventaire[j])
-                        self.personnage.inventaire.pop(j)
+            for mot in words[1:]:
+                for obj in self.personnage.inventaire:
+                    if mot == obj.raccourci:
+                        self.lieu[self.lieu_actuel].contenu.append(obj)
+                        self.personnage.inventaire.remove(obj)
 
         elif words[0] == "aller":
-            for i in words[1:]:
-                if i in self.lieu[self.lieu_actuel].adjacence.keys():
-                    self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[i]
+            for mot in words[1:]:
+                if mot in self.lieu[self.lieu_actuel].adjacence:
+                    self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[mot]
                     self.transition = 1
                     mots_reconnus+=1
 
@@ -114,9 +114,9 @@ class Jeu:
                 print("Attention, plusieurs lieux ont été reconnus. Vous arrivez dans le dernier possible")
 
         elif words[0] == "parler":
-            for i in words:
-                if i in self.lieu[self.lieu_actuel].dialogues:
-                    print("\n- " + self.lieu[self.lieu_actuel].dialogues[i])
+            for mot in words[1:]:
+                if mot in self.lieu[self.lieu_actuel].dialogues:
+                    print("\n- " + self.lieu[self.lieu_actuel].dialogues[mot])
 
         elif words[0] == "inventaire":
             self.personnage.afficher_inventaire()
@@ -125,10 +125,10 @@ class Jeu:
             print("Verbe non reconnu.")
 
     def verif_triggers(self):
-        for i in range(len(self.lieu)):
-            for j in self.lieu[i].triggers:
-                if self.condition_satisfaite(j):
-                    self.declencher(i, self.lieu[i].triggers[j])
+        for lieu in self.lieu:
+            for trigger in lieu.triggers:
+                if self.condition_satisfaite(trigger):
+                    self.declencher(lieu.identifiant, lieu.triggers[trigger])
 
     def condition_satisfaite(self, condition):
         """
@@ -142,20 +142,19 @@ class Jeu:
 
         # On crée un tableau qui contiendra un booléen pour chaque condition
         verification_bools = []
-        for i in range(len(condition)):
+        for cond in condition:
             #vérification d'inventaire
-            if condition[i][0] == "avoir":
-                nom_objet = condition[i][1]
+            if cond[0] == "avoir":
+                nom_objet = cond[1]
                 objet_trouve = False
-                for j in range(len(self.personnage.inventaire)):
-                    if self.personnage.inventaire[i].raccourci == nom_objet:
+                for obj in self.personnage.inventaire:
+                    if obj.raccourci == nom_objet:
                         objet_trouve = True
                 verification_bools.append(objet_trouve)
 
-            #vérification de position
-            if condition[i][0] == "location":
-                verification_bools.append(self.lieu_actuel == int(condition[i][1]))
-
+            #vérification de position : on check lieu actuel = location x
+            if cond[0] == "location":
+                verification_bools.append(self.lieu_actuel == int(cond[1]))
         return all(verification_bools)
 
     def declencher(self, lieu, action):
@@ -166,22 +165,22 @@ class Jeu:
         for i in range(len(action)):
             action[i] = action[i].strip(" ").split(" ")
 
-        for i in range(len(action)):
-            if action[i][0] == 'update_lien':
-                tag = action[i][1]
-                id_lieu = int(action[i][2])
+        for act in action:
+            if act[0] == 'update_lien':
+                tag = act[1]
+                id_lieu = int(act[2])
                 self.lieu[lieu].adjacence.update({tag:id_lieu})
 
-            if action[i][0] == 'remove':
-                objet = action[i][1]
-                for j in range(len(self.personnage.inventaire)):
-                    if self.personnage.inventaire[j].raccourci == objet:
-                        self.personnage.inventaire.pop(j)
+            if act[0] == 'remove':
+                objet = act[1]
+                for obj in self.personnage.inventaire:
+                    if obj.raccourci == objet:
+                        self.personnage.inventaire.remove(obj)
                         break
 
-            if action[i][0] == 'teleport':
-                self.lieu_actuel = int(action[i][1])
+            if act[0] == 'teleport':
+                self.lieu_actuel = int(act[1])
                 self.transition = 1
 
-            if action[i][0] == 'give':
-                self.personnage.inventaire.append(self.objets[int(action[i][1])])
+            if act[0] == 'give':
+                self.personnage.inventaire.append(self.objets[int(act[1])])
