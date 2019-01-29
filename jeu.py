@@ -1,5 +1,13 @@
-import class_lieu
-import class_personnage
+import classLieu
+import classPersonnage
 
-lieu_actuel=class_lieu()
-lieu_actuel.nom
+class Jeu:
+	def __init__(self):
+		self.lieu_initial="0"
+		lieu=()
+
+
+
+
+lieu_initial=class_lieu()
+lieu_initial.nom
