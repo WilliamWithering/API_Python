@@ -6,3 +6,5 @@ class lieu:
       self.nom = nom
       self.description = description
       self.adjacence = adjacence
+    def__repr__(self):
+      pass
