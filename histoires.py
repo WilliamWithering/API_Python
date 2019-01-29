@@ -1,3 +1,5 @@
+
+import classJeu
 def choisir_titre():
 	liste_histoires=["a","b","c"]
 	
@@ -9,5 +11,15 @@ def choisir_titre():
         print("Titre choisi incorrect.")
 		titre_choisi = input("Choisir un nombre correspondant au titre souhaité: ")
 
-
 	return liste_histoires[titre_choisi]
+
+def charger_jeu(titre_choisi):
+	jeu=Jeu()
+	if titre_choisi=="a":
+		jeu.ajouter_lieu(0, "place du village", "une belle place", {"bar":1})
+		jeu.ajouter_lieu(1, "le bar du village", "un bar trop tranquille", {"dehors":0})
+	if titre_choisi=="b":
+		pass
+
+
+	return jeu
