@@ -18,7 +18,7 @@ def charger_jeu(titre_choisi):
 	jeu = classJeu.Jeu()
 	if titre_choisi == "Une histoire de poils.":
 		jeu.ajouter_lieu(0, "place du village", "Voici la place du village, traditionnel coeur de l'animation campagnarde. En cette fin d'après midi, nul pas ne vient cependant fouler les dalles de pierre. En face d'une taverne à l'agitation faible se trouve un barbier. Une massive forge se dresse, tenant fièrement la tête aux vétustes chaumières. Son propriétaire semble cependant absent. Enfin, un petit chemin tortueux serpente en s'éloignant du village.", {"taverne":1,"barbier":2,"forgeron":3,"chemin":4})
-		jeu.ajouter_lieu(1, "la taverne", "Votre intuition ne vous a pas trompé. Hormis l'ivrogne qui se noie dans la bière, il n'y a personne au display(HTML('<strong>comptoir</strong>')). Sur les tables, un couple termine son repas. Depuis l'escalier, vous pouvez sentir l'odeur de renfermé de l'étage.", {"dehors":0})
+		jeu.ajouter_lieu(1, "la taverne", "Votre intuition ne vous a pas trompé. Hormis l'ivrogne qui se noie dans la bière, il n'y a personne au <strong>comptoir</strong>. Sur les tables, un couple termine son repas. Depuis l'escalier, vous pouvez sentir l'odeur de renfermé de l'étage.", {"dehors":0})
 		jeu.ajouter_lieu(2, "le barbier", "",{"dehors":0})
 		jeu.ajouter_lieu(3, "le forgeron", "blabla",{"dehors":0})
 		jeu.ajouter_lieu(4, "un petit chemin","blabla",{"place":0,"grotte":5})
