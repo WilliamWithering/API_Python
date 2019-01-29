@@ -14,7 +14,7 @@ def choisir_titre():
 
 def charger_jeu(titre_choisi):
 	jeu = classJeu.Jeu()
-	if titre_choisi == "a":
+	if titre_choisi == "Une histoire de poils.":
 		jeu.ajouter_lieu(0, "place du village", "une belle place", {"bar":1})
 		jeu.ajouter_lieu(1, "le bar du village", "un bar trop tranquille", {"dehors":0})
 	if titre_choisi == "b":
