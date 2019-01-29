@@ -16,7 +16,7 @@ class Jeu:
         return "C'est tout."
 
     def ajouter_lieu(self, id_lieu, nom, description, adjacence = {}, objet = []):
-        self.lieu.append(Lieu(id_lieu, nom, description, adjacence, objet))
+        self.lieu.append(classLieu.Lieu(id_lieu, nom, description, adjacence, objet))
 
     def afficher_regles(self):
         print(self.regles)
@@ -48,7 +48,7 @@ class Jeu:
 
         elif word[0] == "inventaire":
             pass
-            
+
         else :
             print("Verbe non reconnu.")
 
