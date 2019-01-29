@@ -46,8 +46,9 @@ class Jeu:
             if mots_reconnus > 1 :
                 print("Attention, plusieurs mots ont été reconnus. Le dernier a été sélectionné.")
 
-        elif :
+        elif word[0] == "inventaire":
             pass
+            
         else :
             print("Verbe non reconnu.")
 
