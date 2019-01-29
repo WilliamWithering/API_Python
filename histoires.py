@@ -21,8 +21,8 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(2, "Chez Le Barbier", "Chez le barbier règne une mauvaise humeur. Pas un seul client, et le propriétaire fait les 100 pas, pestant contre la perte d'un objet. Vous pouvez aller \033[1m parler au barbier \033[0m, mais ce dernier ne vous écoutera sûrement pas",{"dehors":0})
 		jeu.ajouter_lieu(3, "La Forge", "Vous rentrez dans la forge, mais personne n'est présent pour vous accueillir. Vous remarquez une belle \033[1m épée \033[0m qui est en train de refroidir. Il vaudrait mieux \033[1m ressortir \033[0m",{"dehors":0})
 		jeu.ajouter_lieu(6, "La Forge", "Le forgeron est présent. ",{"dehors":0}) 
-		jeu.ajouter_lieu(4, "Petit Chemin","blabla",{"place":0,"grotte":5})
-		jeu.ajouter_lieu(5, "La Grotte", "blabla",{})
+		jeu.ajouter_lieu(4, "Petit Chemin","C'est un petit chemin en l'apparence bien tranquille mais qui vous conduira peut-etre vers bien des surprises. Assurez vous bien de vos arrieres ou il sera bientot trop tard..",{"place":0,"grotte":5})
+		jeu.ajouter_lieu(5, "La Grotte", "Une belle grotte. Enfin. Une grotte sombre. Une grotte qui pourrait cacher des trésors mais aussi de terribles créatures. Comme ce serpent qui se brandit devant vous. Vous n'avez plus le choix, il va falloir faire face. A vraincre sans peril, on triomphe sans gloire. Nota : une arme peut etre utile.",{})
 	if titre_choisi == "b":
 		pass
 
