@@ -5,7 +5,7 @@ def choisir_titre():
 		Fonction permettant de choisir le titre de l'histoire à charger.
 		Output : string : titre d'une histoire
 	"""
-	liste_histoires=["Premère histoire."]
+	liste_histoires=["Première histoire."]
 	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
 	for i in range(len(liste_histoires)):
 		print(i, " : ", liste_histoires[i])
@@ -24,7 +24,7 @@ def charger_jeu(titre_choisi):
 	"""
 	jeu = classJeu.Jeu()
 
-	if titre_choisi == "Une histoire de poils.":
+	if titre_choisi == "Première histoire.":
 		jeu.ajouter_personnage("Johann")
 
 		jeu.ajouter_objet(0,"Une paire de ciseaux","ciseaux", "Une paire de ciseaux y est posée. ")
