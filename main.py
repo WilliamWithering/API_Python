@@ -19,7 +19,7 @@ while not jeu.est_fini():
     if jeu.transition:
         jeu.decrire()
         jeu.transition = 0
-    commande = input()
+    commande = input("> ")
     jeu.execute(commande)
 
 #On affiche le message du noeud final
