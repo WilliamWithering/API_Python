@@ -22,10 +22,6 @@ class Jeu:
         print("Dans ce monde il y a des lieux : ")
         for i in range(len(self.lieu)):
             print(self.lieu[i])
-            if len(self.lieu[i].contenu) == 0:
-                print("-> Vide")
-            else :
-                print("-> Non vide")
         return "C'est tout."
 
 ###---- LES AJOUTS UTILISES PAR HISTOIRE
@@ -40,7 +36,6 @@ class Jeu:
 
     def mettre_objet_dans_lieu(self, id_objet, id_lieu):
         self.lieu[id_lieu].contenu.append(self.objets[id_objet])
-        print("Ajout de " + self.objets[id_objet].nom + "dans " + self.lieu[id_lieu].nom )
 
     def delete_objets(self):
         self.objets = None
