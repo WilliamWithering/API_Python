@@ -9,10 +9,15 @@ jeu.afficher_regles()
 
 # Pour vérifier que le jeu a été chargé correctement
 #print(jeu)
-
 #On commence vraiment le jeu
+
+nom_ancien_lieu = ""
+
 while not jeu.est_fini():
     if jeu.transition:
+        if nom_ancien_lieu != jeu.lieu[jeu.lieu_actuel].nom:
+            jeu.afficher_nom_lieu()
+            nom_ancien_lieu = jeu.lieu[jeu.lieu_actuel].nom
         jeu.decrire()
         jeu.transition = 0
 

@@ -59,13 +59,13 @@ class Jeu:
         """
         return len(self.lieu[self.lieu_actuel].adjacence) == 0
 
+    def afficher_nom_lieu(self):
+        print("\n\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
 
     def decrire(self):
         """
         Fonction permettant d'afficher le contenu de l'histoire. On affiche d'abord le titre, puis la description du lieu. Enfin, on ajoute les phrases liées aux objets.
         """
-        print('\n')
-        print("\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
         desc = self.lieu[self.lieu_actuel].description
         for i in range(len(self.lieu[self.lieu_actuel].contenu)):
             desc += self.lieu[self.lieu_actuel].contenu[i].message
