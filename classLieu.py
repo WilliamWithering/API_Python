@@ -19,6 +19,6 @@ class Lieu:
         s+=self.description[:70] + "..."
         s+="\n"
         s+="Objets : "
-        for i in range(len(self.contenu)):
-            s+=self.contenu[i].nom + " "
+        for obj in self.contenu:
+            s+=obj.nom + " "
         return(s)
