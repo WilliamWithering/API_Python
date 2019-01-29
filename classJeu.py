@@ -4,8 +4,8 @@ import classLieu
 import classPersonnage
 
 class Jeu:
-    def __init__(self, lieu_initial):
-        self.lieu_initial = lieu_initial
+    def __init__(self):
+        self.lieu_initial = 0
         self.regles = "Regles du jeu : "
         self.lieu=[]
 
@@ -15,7 +15,7 @@ class Jeu:
         return "C'est tout."
 
     def ajouter_lieu(self, id_lieu, nom, description, adjacence):
-        self.lieu.append(Lieu(id_lieu, nom, description, adjacence))
+        self.lieu.append(classLieu.Lieu(id_lieu, nom, description, adjacence))
 
     def afficher_regles(self):
         print(self.regles)
