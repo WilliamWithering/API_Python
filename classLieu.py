@@ -8,6 +8,6 @@ class Lieu:
       self.adjacence = adjacence
     def __repr__(self):
          s=self.nom
-         s+= " ~~ \n"
+         s+= "  ~  "
          s+=self.description
          return(s)
