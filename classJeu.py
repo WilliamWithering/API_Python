@@ -22,7 +22,10 @@ class Jeu:
         print(self.regles)
 
     def decrire(self):
+        print("\n")
+        print(""\033[1m self.lieu[self.lieu_actuel].nom \033[0m+)
         print(self.lieu[self.lieu_actuel].description)
+        print("\n")
         pass
 
     def execute(self, commande):
