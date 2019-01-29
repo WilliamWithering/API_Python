@@ -8,7 +8,6 @@ jeu = histoires.charger_jeu(titre_choisi)
 
 jeu.afficher_regles()
 
-jeu.set_nom_personnage(input())
 # Pour vérifier que le jeu a été chargé correctement
 # print(jeu)
 
