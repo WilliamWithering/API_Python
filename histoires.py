@@ -1,12 +1,11 @@
 import classJeu
 
-import classJeu
 def choisir_titre():
 	"""
 		Fonction permettant de choisir le titre de l'histoire à charger.
 		Output : string : titre d'une histoire
 	"""
-	liste_histoires=["Une histoire de poils.","La forêt noire","Le petit chaperon rouge"]
+	liste_histoires=["Premère histoire."]
 	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
 	for i in range(len(liste_histoires)):
 		print(i, " : ", liste_histoires[i])
@@ -48,11 +47,5 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & teleport 7 & remove ciseaux & give 2"})
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
-
-	if titre_choisi == "La forêt noire":
-		print("Histoire non existante pour le moment.")
-
-	if titre_choisi == "Le petit chaperon rouge":
-		print("Histoire non existante pour le moment.")
 
 	return jeu
