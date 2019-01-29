@@ -45,8 +45,12 @@ class Jeu:
     def ajouter_trigger(self, id_lieu, dict_trigger):
         self.lieu[id_lieu].triggers.update(dict_trigger)
 
+    def ajouter_dialogue(self, id_lieu, dict_dialogue):
+        self.lieu[id_lieu].dialogues.update(dict_dialogue)
+
     def delete_objets(self):
         self.objets = None
+
 
 ###---- LES FONCTIONS DE JEU
     def afficher_regles(self):
@@ -79,22 +83,21 @@ class Jeu:
 
         On vérifie également la présence d'autres commandes comme l'inventaire.
         """
-        commande = commande.lower()
         words = commande.split(" ")
 
         mots_reconnus = 0
 
         if words[0] == "prendre":
-            for i in range(len(words[1:])):
+            for i in words[1:]:
                 for j in range(len(self.lieu[self.lieu_actuel].contenu)):
-                    if words[i+1] == self.lieu[self.lieu_actuel].contenu[j].raccourci:
+                    if i == self.lieu[self.lieu_actuel].contenu[j].raccourci:
                         self.personnage.inventaire.append(self.lieu[self.lieu_actuel].contenu[j])
                         self.lieu[self.lieu_actuel].contenu.pop(j)
 
         elif words[0] == "poser":
-            for i in range(len(words[1:])):
+            for i in words[1:]:
                 for j in range(len(self.personnage.inventaire)):
-                    if words[i+1] == self.personnage.inventaire[j].raccourci:
+                    if i == self.personnage.inventaire[j].raccourci:
                         self.lieu[self.lieu_actuel].contenu.append(self.personnage.inventaire[j])
                         self.personnage.inventaire.pop(j)
 
@@ -109,6 +112,11 @@ class Jeu:
                 print("La destination n'a pas été reconnue.")
             if mots_reconnus > 1 :
                 print("Attention, plusieurs lieux ont été reconnus. Vous arrivez dans le dernier possible")
+
+        elif words[0] == "parler":
+            for i in words:
+                if i in self.lieu[self.lieu_actuel].dialogues:
+                    print("\n- " + self.lieu[self.lieu_actuel].dialogues[i])
 
         elif words[0] == "inventaire":
             self.personnage.afficher_inventaire()

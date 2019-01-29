@@ -8,6 +8,7 @@ class Lieu:
       self.adjacence = adjacence
       self.contenu = []
       self.triggers = {}
+      self.dialogues = {}
 
     def __repr__(self):
         """

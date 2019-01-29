@@ -24,7 +24,7 @@ while not jeu.est_fini():
     jeu.verif_triggers()
 
     if jeu.transition == 0:
-        commande = input("> ")
+        commande = input("> ").lower()
         jeu.execute(commande)
 
 

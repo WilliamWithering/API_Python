@@ -39,7 +39,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(4, "Petit Chemin","C'est un \033[1m petit chemin \033[0m en l'apparence bien tranquille mais qui vous conduira peut-etre vers bien des surprises. Assurez vous bien de vos arrieres ou il sera bientot trop tard... Vous apercevez au loin une \033[1m grotte \033[0m ",{"place":0,"grotte":5})
 		jeu.ajouter_lieu(5, "La Grotte", "Le chemin derrière vous s'avère trop glissant pour faire demi-tour. Vous êtes dans une belle \033[1m  grotte \033[0m. Enfin. Une \033[1m grotte \033[0m sombre. Une \033[1m grotte \033[0m qui pourrait cacher des trésors mais aussi de terribles créatures. Comme ce \033[1m  serpent \033[0m qui se dresse devant vous. Vous n'avez plus le choix, il va falloir faire face. A vraincre sans peril, on triomphe sans gloire. Nota : une arme peut etre utile. ",{})
 		jeu.ajouter_lieu(6, "Chez Le Barbier", "Le barbier se retourne, et semble remarquer quelque chose dans votre poche. Il s'exclame 'MAIS. Vous avez retrouvé mes ciseaux?!'. Il s'empresse de s'approcher et de les prendre. 'Je ne sais pas comment vous remercier... Veuillez accepter cette maigre compensation financière.' Ils vous donne quelques pièces et retourne vaquer à ses occupations. ",{"dehors":0})
-		jeu.ajouter_lieu(7, "Chez Le Barbier", "Le salon est à calme. Il y flotte une légère odeur de mousse à raser. Dans un coin, le barbier sifflote gaiement. ", {"dehors":0})
+		jeu.ajouter_lieu(7, "Chez Le Barbier", "Le salon est calme. Il y flotte une légère odeur de mousse à raser. Dans un coin, le barbier sifflote gaiement. ", {"dehors":0})
 
 		jeu.mettre_objet_dans_lieu(0,1)
 		jeu.mettre_objet_dans_lieu(1,3)
@@ -47,6 +47,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_trigger(0,{"avoir ciseaux":"update_lien barbier 6"})
 		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & teleport 7 & remove ciseaux & give 2"})
 
+		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je peux pas m'occuper de vous !"})
 
 	if titre_choisi == "La forêt noire":
 		print("Histoire non existante pour le moment.")
