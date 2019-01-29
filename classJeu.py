@@ -39,7 +39,7 @@ class Jeu:
 
         pass
 
-    def est_fini():
+    def est_fini(self):
         return len(self.lieu[self.lieu_actuel].adjacence) == 0
 
 #Personnage n'existe pas encore
