@@ -7,13 +7,16 @@ import classObjet
 class Jeu:
     def __init__(self):
         self.lieu_actuel = 0
-        self.regles = "Regles du jeu : Regles du jeu : \n Pour vous déplacer dans le jeu, vous devez taper le lieu précedé du verbe 'aller'. Plusieurs fins sont possibles dans ce superbe jeu. Certaines sont tragiques, et une seule permet d'accèder au graal. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Que le sort puisse vous etre favorable."
+        self.regles = "\n \n \n Règles du jeu : \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre' ou 'poser'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \n  Plusieurs fins sont possibles : certaines sont tragiques, et une seule permet d'accèder au graal. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Que le sort puisse vous etre favorable."
         self.lieu = []
         self.objets = []
         self.transition = 1
         self.personnage = None
 
     def __repr__(self):
+        """
+            Affiche tous les lieux et les objets de ce monde.
+        """
         if self.objets != None:
             print("Dans ce monde il y a des objets : ")
             for i in range(len(self.objets)):
@@ -25,6 +28,8 @@ class Jeu:
         return "C'est tout."
 
 ###---- LES AJOUTS UTILISES PAR HISTOIRE
+###---- Toutes ces fonctions servent à mettre à jour les listes de lieux et d'objets.
+
     def ajouter_personnage(self, nom, inventaire = []):
         self.personnage = classPersonnage.Personnage(nom, inventaire)
 
@@ -45,6 +50,9 @@ class Jeu:
         print(self.regles)
 
     def decrire(self):
+        """
+        Fonction permettant d'afficher le contenu de l'histoire. On affiche d'abord le titre, puis la description du lieu. Enfin, on ajoute les phrases liées aux objets.
+        """
         print("\n")
         print("\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
         print(self.lieu[self.lieu_actuel].description)
@@ -53,9 +61,15 @@ class Jeu:
             desc_objets += self.lieu[self.lieu_actuel].contenu[i].message
         print(desc_objets)
         print("\n")
-        pass
 
     def execute(self, commande):
+        """
+        Fonction permettant de reconnaître l'ordre donné par l'utilisateur. 
+        On vérifie d'abord la présence des verbes prendre et poser dans la chaine, puis celle d'aller. 
+        Pour prendre et poser, on change la position de l'objet. Pour aller, on modifie la position actuelle. 
+
+        On vérifie également la présence d'autres commandes comme l'inventaire.
+        """
         commande = commande.lower()
         words = commande.split(" ")
 
@@ -95,4 +109,7 @@ class Jeu:
 
 
     def est_fini(self):
+        """
+        Fonction servant à évaluer l'état du jeu. Si le noeud (lieu) actuel n'est lié à aucun autre lieu, on estime que le joueur est dans un cul de sac (gagné ou perdu) et le jeu se termine.
+        """
         return len(self.lieu[self.lieu_actuel].adjacence) == 0

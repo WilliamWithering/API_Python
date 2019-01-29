@@ -2,6 +2,10 @@ import classJeu
 
 import classJeu
 def choisir_titre():
+	"""
+		Fonction permettant de choisir le titre de l'histoire à charger.
+		Output : string : titre d'une histoire
+	"""
 	liste_histoires=["Une histoire de poils.","La forêt noire","Le petit chaperon rouge"]
 	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
 	for i in range(len(liste_histoires)):
@@ -14,6 +18,11 @@ def choisir_titre():
 	return liste_histoires[titre_choisi]
 
 def charger_jeu(titre_choisi):
+	"""
+		Fonction permettant de charger une histoire
+		Input : le titre de l'histoire à charge
+		Output : un objet Jeu, initialisé avec les paramètres de l'histoire
+	"""
 	jeu = classJeu.Jeu()
 
 	if titre_choisi == "Une histoire de poils.":
@@ -36,7 +45,10 @@ def charger_jeu(titre_choisi):
 
 		jeu.delete_objets()
 
-	if titre_choisi == "b":
-		pass
+	if titre_choisi == "La forêt noire":
+		print("Histoire non existante pour le moment.")
+	
+	if titre_choisi == "Le petit chaperon rouge":
+		print("Histoire non existante pour le moment.")
 
 	return jeu
