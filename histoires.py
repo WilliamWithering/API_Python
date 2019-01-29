@@ -1,15 +1,13 @@
 def choisir_titre():
 	liste_histoires=["a","b","c"]
-	print("Voici la liste des titres possibles pour créer votre propre histoire") 
-	print(liste_histoires[0]) 
-	print(liste_histoires[1]) 
-	print(liste_histoires[2]) 
 	
-	titre_choisi=""
+	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
+	for i in range(len(liste_histoires)):
+		print(i, " : ", liste_histoires[i])
+	titre_choisi=input("Sélectionner le nombre associé à votre titre : ")
+	while titre_choisi >= len(liste_histoires) or titre_choisi<0:
+        print("Titre choisi incorrect.")
+		titre_choisi = input("Choisir un nombre correspondant au titre souhaité: ")
 
-	while not titre_choisi in liste_histoires:
-    	if titre_choisi :
-        	print("Titre choisi incorrect.")
-    	titre_choisi = input("Choisir un titre d'histoire : ")
 
-	return titre_choisi
+	return liste_histoires[titre_choisi]
