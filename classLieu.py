@@ -9,6 +9,7 @@ class Lieu:
       self.contenu = []
       self.triggers = {}
       self.dialogues = {}
+      self.utilisation = {}
 
     def __repr__(self):
         """

@@ -55,6 +55,9 @@ class Jeu:
     def ajouter_dialogue(self, id_lieu, dict_dialogue):
         self.lieu[id_lieu].dialogues.update(dict_dialogue)
 
+    def ajouter_utilisation(self, id_lieu, dict_utilisation):
+        self.lieu[id_lieu].utilisation.update(dict_utilisation)
+
     def delete_objets(self):
         self.objets = None
 
@@ -68,7 +71,7 @@ class Jeu:
         """
         Fonction servant à évaluer l'état du jeu. Si le noeud (lieu) actuel n'est lié à aucun autre lieu, on estime que le joueur est dans un cul de sac (gagné ou perdu) et le jeu se termine.
         """
-        return len(self.lieu[self.lieu_actuel].adjacence) == 0
+        return len(self.lieu[self.lieu_actuel].adjacence) + len(self.lieu[self.lieu_actuel].utilisation) == 0
 
     def afficher_nom_lieu(self):
         print("\n\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
@@ -124,6 +127,11 @@ class Jeu:
             for mot in words[1:]:
                 if mot in self.lieu[self.lieu_actuel].dialogues:
                     print("\n- " + self.lieu[self.lieu_actuel].dialogues[mot])
+
+        elif words[0] == "utiliser"
+            for mot in words[1:]:
+                if (mot in self.lieu[self.lieu_actuel].utilisation) and (mot in self.personnage.inventaire):
+                    self.declencher(self.lieu_actuel, self.lieu[self.lieu_actuel].utilisation[mot])
 
         elif words[0] == "inventaire":
             self.personnage.afficher_inventaire()
