@@ -8,7 +8,7 @@ jeu = histoires.charger_jeu(titre_choisi)
 jeu.afficher_regles()
 
 # Pour vérifier que le jeu a été chargé correctement
-print(jeu)
+#print(jeu)
 #On commence vraiment le jeu
 
 nom_ancien_lieu = ""
