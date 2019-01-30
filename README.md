@@ -12,6 +12,10 @@ Fonctionnalités implémentées :
 - Gestion des commandes
 - Gestion d'évènements scénaristiques
 
+Quelques problèmes :
+- Peu de souplesse dans les noms saisis (accents...)
+- Affichage du gras non disponible sous windows : les balises ayant cet effet pour UNIX ne sont pas reconnues par le cmd Windows.
+
 Pour aller plus loin : 
 - Créer plus d'évènements scénaristiques utilisables
 - Ajouter des histoires
