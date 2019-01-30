@@ -135,6 +135,10 @@ class Jeu:
                     for obj in self.personnage.inventaire:
                         if mot == obj.raccourci:
                             self.declencher(self.lieu_actuel, self.lieu[self.lieu_actuel].utilisation[mot])
+                            mots_reconnus += 1
+
+            if not mots_reconnus:
+                print("Utilisation impossible.")
 
         elif words[0] == "inventaire":
             self.personnage.afficher_inventaire()
@@ -173,6 +177,14 @@ class Jeu:
             #vérification de position : on check lieu actuel = location x
             if cond[0] == "location":
                 verification_bools.append(self.lieu_actuel == int(cond[1]))
+
+            if cond[0] = "ne_pas_avoir":
+                objet_trouve = False
+                for obj in self.personnage.inventaire:
+                    if obj.raccourci = cond[1]:
+                        objet_trouve = True
+                verification_bools.append(not objet_trouve)
+                
         return all(verification_bools)
 
     def declencher(self, lieu, action):
