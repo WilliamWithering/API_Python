@@ -7,7 +7,14 @@ import classObjet
 class Jeu:
     def __init__(self):
         self.lieu_actuel = 0
-        self.regles = "\n \n \n \033[1mRègles du jeu :\033[0m \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre', 'poser' ou parfois parler. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \n  Plusieurs fins sont possibles : certaines sont tragiques, d'autres moins. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Puisse le sort vous etre favorable.\n\n\n"
+        self.regles = "\n \n \n \033[1mRègles du jeu :\033[0m \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre', 'poser' ou parfois 'parler'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \
+        \n  Plusieurs fins sont possibles : certaines sont tragiques, d'autres moins. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Puisse le sort vous etre favorable.\n\n \
+        Quelques exemples de commandes disponibles dans certaines situations : \n\
+        • aller dehors \n\
+        • prendre les ciseaux \n\
+        • poser les ciseaux \n\
+        • parler au barbier \n\
+        • aller dans la taverne / chez le barbier... \n"
         self.lieu = []
         self.objets = []
         self.transition = 1
