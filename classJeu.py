@@ -106,11 +106,15 @@ class Jeu:
             for mot in words[1:]:
                 for obj in self.lieu[self.lieu_actuel].contenu:
                     if mot == obj.raccourci:
+                        mots_reconnus += 1
                         self.personnage.inventaire.append(obj)
                         self.lieu[self.lieu_actuel].contenu.remove(obj)
                         print("Vous avez obtenu : " + obj.nom)
 
-# en l'état actuel, la commande poser crée des problèmes 
+            if mots_reconnus == 0:
+                print("Impossible de prendre cet objet.")
+
+# en l'état actuel, la commande poser crée des problèmes
 #        elif words[0] == "poser":
 #            for mot in words[1:]:
 #                for obj in self.personnage.inventaire:
@@ -123,17 +127,21 @@ class Jeu:
                 if mot in self.lieu[self.lieu_actuel].adjacence:
                     self.lieu_actuel = self.lieu[self.lieu_actuel].adjacence[mot]
                     self.transition = 1
-                    mots_reconnus+=1
+                    mots_reconnus += 1
 
             if mots_reconnus == 0 :
-                print("La destination n'a pas été reconnue.")
+                print("La destination n'a pas été reconnue, ou est inaccessible depuis ce lieu.")
             if mots_reconnus > 1 :
                 print("Attention, plusieurs lieux ont été reconnus. Vous arrivez dans le dernier possible")
+
 
         elif words[0] == "parler":
             for mot in words[1:]:
                 if mot in self.lieu[self.lieu_actuel].dialogues:
+                    mots_reconnus += 1
                     print("\n\033[1m" + mot.capitalize() + "\033[0m : "  + self.lieu[self.lieu_actuel].dialogues[mot])
+            if mots_reconnus == 0:
+                print("Impossible de parler à cette personne.")
 
         elif words[0] == "utiliser":
             for mot in words[1:]:
