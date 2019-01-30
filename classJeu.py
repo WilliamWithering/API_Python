@@ -7,15 +7,14 @@ import classObjet
 class Jeu:
     def __init__(self):
         self.lieu_actuel = 0
-        self.regles = "\n \n \n \033[1mRègles du jeu :\033[0m \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre', 'poser', 'utiliser' ou parfois 'parler'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \
+        self.regles = "\n \n \n\033[1mRègles du jeu :\033[0m \n Pour vous déplacer dans le jeu, vous devez taper nom du lieu précedé du verbe 'aller'. D'autres verbes sont reconnus, tels que 'prendre', 'utiliser' ou parfois 'parler'. A tout moment, il est également possible d'utiliser la commande 'inventaire' pour afficher les objets présents dans l'inventaire. \
         \n  Plusieurs fins sont possibles : certaines sont tragiques, d'autres moins. Les lieux et objets disponibles pour des interactions sont mis en gras dans les textes. Puisse le sort vous etre favorable.\n\n \
         Quelques exemples de commandes disponibles dans certaines situations : \n\
-        • aller dehors \n\
+        • aller dehors/ dans la taverne / chez le barbier / vers la clairiere...\n\
         • prendre les ciseaux \n\
-        • poser les ciseaux \n\
         • parler au barbier \n\
-        • aller dans la taverne / chez le barbier...\n\
-        • utiliser les pieces\n"
+        • utiliser les pieces\n\
+        N'utilisez pas d'accents dans vos commandes."
         self.lieu = []
         self.objets = []
         self.transition = 1
@@ -107,12 +106,13 @@ class Jeu:
                         self.lieu[self.lieu_actuel].contenu.remove(obj)
                         print("Vous avez obtenu : " + obj.nom)
 
-        elif words[0] == "poser":
-            for mot in words[1:]:
-                for obj in self.personnage.inventaire:
-                    if mot == obj.raccourci:
-                        self.lieu[self.lieu_actuel].contenu.append(obj)
-                        self.personnage.inventaire.remove(obj)
+# en l'état actuel, la commande poser crée des problèmes 
+#        elif words[0] == "poser":
+#            for mot in words[1:]:
+#                for obj in self.personnage.inventaire:
+#                    if mot == obj.raccourci:
+#                        self.lieu[self.lieu_actuel].contenu.append(obj)
+#                        self.personnage.inventaire.remove(obj)
 
         elif words[0] == "aller":
             for mot in words[1:]:
