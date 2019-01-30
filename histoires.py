@@ -97,6 +97,6 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_utilisation(4,{"machette":"teleport 5"})
 		jeu.ajouter_utilisation(2,{"parchemin":"teleport 3"})
 		
-
+		jeu.ajouter_dialogue(2,{"creature":"Alors, vous avez la réponse? Il se peut que j'aie une récompense pour vous..."})
 
 	return jeu
