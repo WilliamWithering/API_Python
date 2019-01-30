@@ -24,9 +24,11 @@ def charger_jeu(titre_choisi):
 	"""
 	jeu = classJeu.Jeu()
 
-	if titre_choisi == "Première histoire.":
-		jeu.ajouter_personnage("Johann")
+	prenom = input("Quel est le prénom de votre personnage?") 
 
+	jeu.ajouter_personnage(prenom)
+
+	if titre_choisi == "Première histoire.":
 		jeu.ajouter_objet(0,"Une paire de ciseaux","ciseaux", "Une paire de ciseaux y est posée. ")
 		jeu.ajouter_objet(1,"Une belle épée", "epee", "Une lame à l'aspect redoutable se trouve là. ")
 		jeu.ajouter_objet(2,"Quelques pièces", "pieces", "Vous remarquez également quelques pièces qui trainent sans surveillance.")
