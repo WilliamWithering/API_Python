@@ -74,7 +74,7 @@ class Jeu:
         return len(self.lieu[self.lieu_actuel].adjacence) + len(self.lieu[self.lieu_actuel].utilisation) == 0
 
     def afficher_nom_lieu(self):
-        print("\n\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m \n")
+        print("\n\033[1m" +  self.lieu[self.lieu_actuel].nom + " : \033[0m")
 
     def decrire(self):
         """
@@ -83,7 +83,7 @@ class Jeu:
         desc = self.lieu[self.lieu_actuel].description
         for obj in self.lieu[self.lieu_actuel].contenu:
             desc += obj.message
-        print(desc + '\n')
+        print('\n' + desc + '\n')
 
     def execute(self, commande):
         """
