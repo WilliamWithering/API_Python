@@ -9,11 +9,19 @@ def choisir_titre():
 	print("Voici la liste des titres possibles pour créer votre propre histoire : ")
 	for i in range(len(liste_histoires)):
 		print(i, " : ", liste_histoires[i])
-	titre_choisi=int(input("Sélectionner le nombre associé à votre titre : "))
+
+	try:
+		titre_choisi=int(input("Sélectionner le nombre associé à votre titre : "))
+	except ValueError:
+		titre_choisi = -1
+		print("Veuillez saisir un nombre.")
+
 	while titre_choisi >= len(liste_histoires) or titre_choisi < 0:
 		print("Titre choisi incorrect.")
-		titre_choisi = int(input("Choisir un nombre correspondant au titre souhaité: "))
-
+		try:
+			titre_choisi=int(input("Sélectionner le nombre associé à votre titre : "))
+		except ValueError:
+			print("Veuillez saisir un nombre.")
 	return liste_histoires[titre_choisi]
 
 def charger_jeu(titre_choisi):

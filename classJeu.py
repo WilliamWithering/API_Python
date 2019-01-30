@@ -94,6 +94,7 @@ class Jeu:
 
         On vérifie également la présence d'autres commandes comme l'inventaire.
         """
+        commande = commande.replace("'"," ")
         words = commande.strip(" ").split(" ")
 
         mots_reconnus = 0
