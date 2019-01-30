@@ -178,13 +178,13 @@ class Jeu:
             if cond[0] == "location":
                 verification_bools.append(self.lieu_actuel == int(cond[1]))
 
-            if cond[0] = "ne_pas_avoir":
+            if cond[0] == "ne_pas_avoir":
                 objet_trouve = False
                 for obj in self.personnage.inventaire:
-                    if obj.raccourci = cond[1]:
+                    if obj.raccourci == cond[1]:
                         objet_trouve = True
                 verification_bools.append(not objet_trouve)
-                
+
         return all(verification_bools)
 
     def declencher(self, lieu, action):

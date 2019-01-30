@@ -53,7 +53,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_trigger(0,{"location 6 & avoir ciseaux":"update_lien barbier 7 & remove ciseaux & give 2"})
 		jeu.ajouter_trigger(3,{'avoir epee & location 3' : "teleport 8"})
 		jeu.ajouter_trigger(0,{"avoir pieces":"update_lien forge 9"})
-		jeu.ajouter_trigger(5,{"ne_pas_avoir epee":"teleport 11"})
+		jeu.ajouter_trigger(5,{"ne_pas_avoir epee & location 5":"teleport 11"})
 
 		jeu.ajouter_utilisation(9, {"pieces":"remove pieces & give 1"})
 		jeu.ajouter_utilisation(5, {"epee":"teleport 10"})
