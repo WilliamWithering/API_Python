@@ -16,7 +16,7 @@ class Jeu:
         • parler au barbier \n\
         • utiliser les pièces\n\
        "
-        self.lieu = []
+        self.lieu = {}
         self.objets = []
         self.transition = 1
         self.personnage = None
@@ -32,7 +32,7 @@ class Jeu:
 
         print("Dans ce monde il y a des lieux : ")
         for lieu in self.lieu:
-            print(lieu)
+            print(self.lieu[lieu].nom)
         return "C'est tout."
 
 ###---- LES AJOUTS UTILISES PAR HISTOIRE
@@ -45,7 +45,7 @@ class Jeu:
         self.objets.append(classObjet.Objet(id_objet, nom, raccourci, message))
 
     def ajouter_lieu(self, id_lieu, nom, description, adjacence = {}):
-        self.lieu.append(classLieu.Lieu(id_lieu, nom, description, adjacence))
+        self.lieu.update({id_lieu:classLieu.Lieu(nom, description, adjacence)})
 
     def mettre_objet_dans_lieu(self, id_objet, id_lieu):
         self.lieu[id_lieu].contenu.append(self.objets[id_objet])
@@ -161,10 +161,10 @@ class Jeu:
             print("Verbe non reconnu.")
 
     def verif_triggers(self):
-        for lieu in self.lieu:
-            for trigger in lieu.triggers:
+        for id_lieu in self.lieu:
+            for trigger in self.lieu[id_lieu].triggers:
                 if self.condition_satisfaite(trigger):
-                    self.declencher(lieu.identifiant, lieu.triggers[trigger])
+                    self.declencher(id_lieu, self.lieu[id_lieu].triggers[trigger])
 
     def condition_satisfaite(self, condition):
         """

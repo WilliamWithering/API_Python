@@ -1,8 +1,7 @@
 #Définition de la classe lieu : attributs et méthodes
 
 class Lieu:
-    def __init__(self, identifiant, nom, description, adjacence):
-      self.identifiant = identifiant
+    def __init__(self, nom, description, adjacence):
       self.nom = nom
       self.description = description
       self.adjacence = adjacence
