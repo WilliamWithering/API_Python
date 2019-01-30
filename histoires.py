@@ -68,4 +68,19 @@ def charger_jeu(titre_choisi):
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
 
+if titre_choisi == "La fôret kifaipeur.":
+
+		jeu.ajouter_objet(0,"Une machette","machette", "Vous observez une vieille machette. Bien qu'un peu émoussée et sans doute peu efficace en combat, cet outil vous permettra de trancher des buissons. ")
+		jeu.ajouter_objet(1,"Une vieille clé", "cle", "Dans la plaque de boue, vous observez un reflet argenté, c'est une vieille clé")
+		jeu.ajouter_objet(2,"Parchemin des anciens", "parchemin", "Dans un imposant écrin de bronze vous trouvez également un parchemin. Lorsque vous l'ouvrez, ce dernier semble vous abreuver de toutes les connaissances du monde")
+
+		jeu.ajouter_lieu(0, "Orée de la forêt", "Vous êtes encore au début de la forêt, il est encore temps de \033[1msortir\033[0m. Vous pouvez sinon continuer en passant par le \033[1mchemin\033[0m", {"chemin":1,"sortir":8})
+		jeu.ajouter_lieu(1, "Clairière", "Après avoir suivi le chemin, vous arrivez dans une clairière. En face de vous, une \033[1mcabane\033[0m massive trône. Un chemin à l'ouest vous mène vers un petit \033[1mlac\033[0m, tandis qu'à l'Est, un autre vous emmène plus profondèment dans la \033[1mforêt\033[0m.", {"lac":2,"foret":4,"cabane":6})
+		jeu.ajouter_lieu(2, "Lac", "Après que vous vous êtes approché du lac, une créature féérique en sort. Elle vous pose alors une énigme, qui semble insolvable pour votre cerveau d'humain. Vous ne pouvez que \033[1msortir\033[0m et revenir en arrière" , {"sortir":1})
+		jeu.ajouter_lieu(3, "Lac", "Après que vous vous êtes approché du lac, une créature féérique en sort. Elle vous pose alors une énigme. Vous sortez alors le parchemin, et à l'aide des connaissances qu'il renforme, vous répondez avec brio à cette dernière. La créature vous récompense alors d'une machette. Vous resortez alors", {"sortir":1,})
+		jeu.ajouter_lieu(4, "Forêt profonde","Alors que vous vous enfondez dans la forêt, votre attention est rapidement attirée par un immense arbre, dont le tronc semble creux. Cependant, un énorme buisson vous bloque le passage. Vous ne pouvez que \033[1msortir\033[0m et revenir en arrière", {"sortir":1})
+		jeu.ajouter_lieu(5, "Forêt profonde","Alors que vous vous enfondez dans la forêt, votre attention est rapidement attirée par un immense arbre, dont le tronc semble creux. A l'aide de votre machette fraichement acquise, vous coupez le buisson qui vous bloque le passage, et vous récupérez une clé dans le tronc de l'arbre. Vous resortez alors", {"sortir":1})
+		jeu.ajouter_lieu(6, "Cabane","La porte de la cabane est malheureusement verrouillée, impossible de rentrez ni même de forcer l'épaisse porte en bois. Vous ne pouvez que \033[1msortir\033[0m et revenir en arrière", {"sortir":1})
+		jeu.ajouter_lieu(7, "Cabane","Avec la clé fraichement acquise, vous ouvrez la porte de la cabane. Dedans, vous trouvez un fabuleux trésor !", {})
+		jeu.ajouter_lieu(8, "Sortir","Vous êtes sortis de la forêt, fin du jeu",{})
 	return jeu
