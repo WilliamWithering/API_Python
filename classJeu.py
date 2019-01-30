@@ -129,7 +129,7 @@ class Jeu:
         elif words[0] == "parler":
             for mot in words[1:]:
                 if mot in self.lieu[self.lieu_actuel].dialogues:
-                    print("\n- " + self.lieu[self.lieu_actuel].dialogues[mot])
+                    print("\n\033[1m" + mot.capitalize() + "\033[0m : "  + self.lieu[self.lieu_actuel].dialogues[mot])
 
         elif words[0] == "utiliser":
             for mot in words[1:]:
