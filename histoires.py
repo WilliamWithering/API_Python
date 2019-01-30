@@ -24,7 +24,7 @@ def charger_jeu(titre_choisi):
 	"""
 	jeu = classJeu.Jeu()
 
-	prenom = input("Quel est le prénom de votre personnage?") 
+	prenom = input("Quel est le prénom de votre personnage?")
 
 	jeu.ajouter_personnage(prenom)
 
@@ -44,14 +44,15 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(8, "Game over", "L'épée était encore brulante, votre fin est tragique.", {})
 		jeu.ajouter_lieu(9, "La Forge", "Le forgeron est entrain de forger. Rien de plus logique. Votre présence semble le pertuber. Peut-être qu'il a quelque chose à cacher ou à vendre. Votre curiosité est récompensée. Il se retourne enfin et vous propose d'acquérir une \033[1m  belle épee \033[0m contre quelques \033[1m pièces \033[0m",{"dehors":0})
 
-
 		jeu.mettre_objet_dans_lieu(0,1)
 		jeu.mettre_objet_dans_lieu(1,3)
 
 		jeu.ajouter_trigger(0,{"avoir ciseaux":"update_lien barbier 6"})
-		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & remove ciseaux & give 2"})
+		jeu.ajouter_trigger(0,{"location 6 & avoir ciseaux":"update_lien barbier 7 & remove ciseaux & give 2"})
 		jeu.ajouter_trigger(3,{'avoir epee & location 3' : "teleport 8"})
 		jeu.ajouter_trigger(0,{"avoir pieces":"update_lien forge 9"})
+
+		jeu.ajouter_utilisation(9, {"pieces":"remove pieces & give 1"})
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
 

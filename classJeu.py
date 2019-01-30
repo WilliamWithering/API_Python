@@ -93,7 +93,7 @@ class Jeu:
 
         On vérifie également la présence d'autres commandes comme l'inventaire.
         """
-        words = commande.split(" ")
+        words = commande.strip(" ").split(" ")
 
         mots_reconnus = 0
 
@@ -103,6 +103,7 @@ class Jeu:
                     if mot == obj.raccourci:
                         self.personnage.inventaire.append(obj)
                         self.lieu[self.lieu_actuel].contenu.remove(obj)
+                        print("Vous avez obtenu : " + obj.nom)
 
         elif words[0] == "poser":
             for mot in words[1:]:
@@ -128,10 +129,12 @@ class Jeu:
                 if mot in self.lieu[self.lieu_actuel].dialogues:
                     print("\n- " + self.lieu[self.lieu_actuel].dialogues[mot])
 
-        elif words[0] == "utiliser"
+        elif words[0] == "utiliser":
             for mot in words[1:]:
-                if (mot in self.lieu[self.lieu_actuel].utilisation) and (mot in self.personnage.inventaire):
-                    self.declencher(self.lieu_actuel, self.lieu[self.lieu_actuel].utilisation[mot])
+                if (mot in self.lieu[self.lieu_actuel].utilisation):
+                    for obj in self.personnage.inventaire:
+                        if mot == obj.raccourci:
+                            self.declencher(self.lieu_actuel, self.lieu[self.lieu_actuel].utilisation[mot])
 
         elif words[0] == "inventaire":
             self.personnage.afficher_inventaire()
@@ -191,6 +194,7 @@ class Jeu:
                 for obj in self.personnage.inventaire:
                     if obj.raccourci == objet:
                         self.personnage.inventaire.remove(obj)
+                        print("Vous avez donné : " + obj.nom)
                         break
 
             if act[0] == 'teleport':
@@ -199,3 +203,4 @@ class Jeu:
 
             if act[0] == 'give':
                 self.personnage.inventaire.append(self.objets[int(act[1])])
+                print("Vous avez obtenu : " + self.objets[int(act[1])].nom)
