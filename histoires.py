@@ -41,12 +41,17 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(5, "La Grotte", "Le chemin derrière vous s'avère trop glissant pour faire demi-tour. Vous êtes dans une belle \033[1m  grotte \033[0m. Enfin. Une \033[1m grotte \033[0m sombre. Une \033[1m grotte \033[0m qui pourrait cacher des trésors mais aussi de terribles créatures. Comme ce \033[1m  serpent \033[0m qui se dresse devant vous. Vous n'avez plus le choix, il va falloir faire face. A vraincre sans peril, on triomphe sans gloire. Nota : une arme peut etre utile. ",{})
 		jeu.ajouter_lieu(6, "Chez Le Barbier", "Le barbier se retourne, et semble remarquer quelque chose dans votre poche. Il s'exclame 'MAIS. Vous avez retrouvé mes ciseaux?!'. Il s'empresse de s'approcher et de les prendre. 'Je ne sais pas comment vous remercier... Veuillez accepter cette maigre compensation financière.' Ils vous donne quelques pièces et retourne vaquer à ses occupations. ",{"dehors":0})
 		jeu.ajouter_lieu(7, "Chez Le Barbier", "Le salon est calme. Il y flotte une légère odeur de mousse à raser. Dans un coin, le barbier sifflote gaiement. ", {"dehors":0})
+		jeu.ajouter_lieu(8, "Game over", "L'épée était encore brulante, votre fin est tragique.", {})
+		jeu.ajouter_lieu(9, "La Forge", "Le forgeron est entrain de forger. Rien de plus logique. Votre présence semble le pertuber. Peut-être qu'il a quelque chose à cacher ou à vendre. Votre curiosité est récompensée. Il se retourne enfin et vous propose d'acquérir une \033[1m  belle épee \033[0m contre quelques \033[1m pièces \033[0m",{"dehors":0})
+
 
 		jeu.mettre_objet_dans_lieu(0,1)
 		jeu.mettre_objet_dans_lieu(1,3)
 
 		jeu.ajouter_trigger(0,{"avoir ciseaux":"update_lien barbier 6"})
-		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & teleport 7 & remove ciseaux & give 2"})
+		jeu.ajouter_trigger(0,{"location 6":"update_lien barbier 7 & remove ciseaux & give 2"})
+		jeu.ajouter_trigger(3,{'avoir epee & location 3' : "teleport 8"})
+		jeu.ajouter_trigger(0,{"avoir pieces":"update_lien forge 9"})
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
 
