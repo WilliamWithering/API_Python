@@ -15,7 +15,7 @@ class Jeu:
         • poser les ciseaux \n\
         • parler au barbier \n\
         • aller dans la taverne / chez le barbier...\n\
-        •  utiliser les pieces\n"
+        • utiliser les pieces\n"
         self.lieu = []
         self.objets = []
         self.transition = 1
