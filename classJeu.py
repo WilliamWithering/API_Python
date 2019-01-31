@@ -244,7 +244,7 @@ class Jeu:
                 for obj in self.personnage.inventaire:
                     if obj.raccourci == objet:
                         self.personnage.inventaire.remove(obj)
-                        print("Vous avez donné : " + obj.nom)
+                        print("Vous avez perdu : " + obj.nom)
                         break
 
             if act[0] == 'teleport':
