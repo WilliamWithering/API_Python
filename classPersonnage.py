@@ -4,6 +4,7 @@ class Personnage:
     def __init__(self, nom, inventaire = []):
         self.nom = nom
         self.inventaire = inventaire
+        self.etats = {}
 
     def afficher_inventaire(self):
         """

@@ -56,6 +56,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_lieu(9, "La Forge", "Le forgeron est entrain de forger. Rien de plus logique. Votre présence semble le pertuber. Peut-être qu'il a quelque chose à cacher ou à vendre. Votre curiosité est récompensée. Il se retourne enfin et vous propose d'acquérir une \033[1m belle épee \033[0m contre quelques \033[1m pièces \033[0m",{"dehors":0})
 		jeu.ajouter_lieu(10, "Victoire !", "Vous saisissez votre épée et tranchez la tête du serpent d'un geste vif. Bravo !",{})
 		jeu.ajouter_lieu(11,"Game over","Le serpent vous attaque et vous n'avez pas d'arme.")
+		jeu.ajouter_lieu(12,"Game over","Vous avancez vers le chemin, bien décidé à aller voir ce qui se trouve au bout. Cependant, la bière que vous avez consommé semble avoir un effet plus fort que prévu. Vous titubez légèrement, glissez, et votre tête percute violemment une grosse pierre.")
 
 		jeu.mettre_objet_dans_lieu(0,1)
 		jeu.mettre_objet_dans_lieu(1,3)
@@ -66,15 +67,19 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_trigger(3,{'avoir epee & location 3' : "teleport 8"})
 		jeu.ajouter_trigger(0,{"avoir pieces":"update_lien forge 9"})
 		jeu.ajouter_trigger(5,{"ne_pas_avoir epee & location 5":"teleport 11"})
+		jeu.ajouter_trigger(0,{"etat_joueur ivre 1":"update_lien chemin 12"})
+		jeu.ajouter_trigger(0,{"etat_joueur ivre 0":"update_lien chemin 4"})
 
 		jeu.ajouter_utilisation(9, {"pieces":"remove pieces & give 1"})
 		jeu.ajouter_utilisation(5, {"epee":"teleport 10"})
 		jeu.ajouter_utilisation(1, {"pieces":"remove pieces & give 3"})
-		jeu.ajouter_utilisation(1, {"biere":"remove biere"})
+		jeu.ajouter_utilisation(1, {"biere":"remove biere & update_etat ivre 1"})
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
 		jeu.ajouter_dialogue(1,{"ivrogne":"Burp."})
 		jeu.ajouter_dialogue(1,{"tavernier":"J'espère que le barbier arrivera bientôt à résoudre son problème... Vous voulez une bière?"})
+
+		jeu.ajouter_etat("ivre")
 
 	if titre_choisi == 1:
 

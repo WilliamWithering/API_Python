@@ -59,6 +59,9 @@ class Jeu:
     def ajouter_utilisation(self, id_lieu, dict_utilisation):
         self.lieu[id_lieu].utilisation.update(dict_utilisation)
 
+    def ajouter_etat(self, tag, valeur = 0):
+        self.personnage.etats.update({tag:valeur})
+
     def delete_objets(self):
         self.objets = None
 
@@ -188,6 +191,11 @@ class Jeu:
                         objet_trouve = True
                 verification_bools.append(objet_trouve)
 
+            if cond[0] == "etat_joueur":
+                tag = cond[1]
+                valeur = int(cond[2])
+                verification_bools.append(self.personnage.etats[tag] == valeur)
+
             if cond[0] == "valeur_lien":
                 lieu_origin = int(cond[1])
                 lien_verif = cond[2]
@@ -225,6 +233,11 @@ class Jeu:
                 tag = act[1]
                 new_phrase = act[2:]
                 self.lieu[lieu].dialogues.update({tag:' '.join(word for word in new_phrase)})
+
+            if act[0] == 'update_etat':
+                tag = act[1]
+                valeur = int(act[2])
+                self.personnage.etats.update({tag:valeur})
 
             if act[0] == 'remove':
                 objet = act[1]
