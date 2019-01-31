@@ -188,6 +188,12 @@ class Jeu:
                         objet_trouve = True
                 verification_bools.append(objet_trouve)
 
+            if cond[0] == "valeur_lien":
+                lieu_origin = int(cond[1])
+                lien_verif = cond[2]
+                lien_valeur = int(cond[3])
+                verification_bools.append(self.lieu[lieu_origin].adjacence[lien_verif] == lien_valeur)
+
             #vérification de position : on check lieu actuel = location x
             if cond[0] == "location":
                 verification_bools.append(self.lieu_actuel == int(cond[1]))
@@ -214,6 +220,11 @@ class Jeu:
                 tag = act[1]
                 id_lieu = int(act[2])
                 self.lieu[lieu].adjacence.update({tag:id_lieu})
+
+            if act[0] == 'update_dialogue':
+                tag = act[1]
+                new_phrase = act[2:]
+                self.lieu[lieu].dialogues.update({tag:' '.join(word for word in new_phrase)})
 
             if act[0] == 'remove':
                 objet = act[1]

@@ -42,6 +42,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_objet(0,"Une paire de ciseaux","ciseaux", "Une paire de ciseaux y est posée. ")
 		jeu.ajouter_objet(1,"Une belle épée", "epee", "Une lame à l'aspect redoutable se trouve là. ")
 		jeu.ajouter_objet(2,"Quelques pièces", "pieces", "Vous remarquez également quelques pièces qui trainent sans surveillance.")
+		jeu.ajouter_objet(3,"Une bonne bière", "biere", "Une choppe de bière légèrement mousseuse, au fort parfum de houblon.")
 
 		jeu.ajouter_lieu(0, "Place du Village", "Vous êtes sur la \033[1mplace du village\033[0m, traditionnel coeur de l'animation campagnarde. En cette fin d'après midi, nul pas ne vient cependant fouler les dalles de pierre. En face d'une \033[1m taverne \033[0m à l'agitation faible se trouve un \033[1m barbier \033[0m. Une massive \033[1m forge \033[0m se dresse, tenant fièrement la tête aux vétustes chaumières. Son propriétaire semble cependant absent. Enfin, un petit \033[1m chemin \033[0m tortueux serpente en s'éloignant du village. ", {"taverne":1,"barbier":2,"forge":3,"chemin":4})
 		jeu.ajouter_lieu(1, "La Taverne", "Votre intuition ne vous a pas trompé. Sur les tables, un couple termine son repas. Depuis l'escalier, vous pouvez sentir l'odeur de renfermé de l'etage. Hormis l'ivrogne qui se noie dans la bière, il n'y a personne au comptoir. ", {"dehors":0})
@@ -61,14 +62,19 @@ def charger_jeu(titre_choisi):
 
 		jeu.ajouter_trigger(0,{"avoir ciseaux":"update_lien barbier 6"})
 		jeu.ajouter_trigger(0,{"location 6 & avoir ciseaux":"update_lien barbier 7 & remove ciseaux & give 2"})
+		jeu.ajouter_trigger(1,{"valeur_lien 0 barbier 7":"update_dialogue tavernier Vous voulez une bière?"})
 		jeu.ajouter_trigger(3,{'avoir epee & location 3' : "teleport 8"})
 		jeu.ajouter_trigger(0,{"avoir pieces":"update_lien forge 9"})
 		jeu.ajouter_trigger(5,{"ne_pas_avoir epee & location 5":"teleport 11"})
 
 		jeu.ajouter_utilisation(9, {"pieces":"remove pieces & give 1"})
 		jeu.ajouter_utilisation(5, {"epee":"teleport 10"})
+		jeu.ajouter_utilisation(1, {"pieces":"remove pieces & give 3"})
+		jeu.ajouter_utilisation(1, {"biere":"remove biere"})
 
 		jeu.ajouter_dialogue(2,{"barbier":"Vous voyez bien que je n'ai pas mes ciseaux?! Je ne peux pas m'occuper de vous !"})
+		jeu.ajouter_dialogue(1,{"ivrogne":"Burp."})
+		jeu.ajouter_dialogue(1,{"tavernier":"J'espère que le barbier arrivera bientôt à résoudre son problème... Vous voulez une bière?"})
 
 	if titre_choisi == 1:
 
@@ -96,7 +102,7 @@ def charger_jeu(titre_choisi):
 		jeu.ajouter_utilisation(6,{"cle":"teleport 7"})
 		jeu.ajouter_utilisation(4,{"machette":"teleport 5"})
 		jeu.ajouter_utilisation(2,{"parchemin":"teleport 3"})
-		
+
 		jeu.ajouter_dialogue(2,{"creature":"Alors, vous avez la réponse? Il se peut que j'aie une récompense pour vous..."})
 
 	return jeu
